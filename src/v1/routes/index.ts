@@ -1,32 +1,29 @@
-import { Router } from "express";
-import { readdirSync } from "fs";
+import { Router, Request, Response } from "express";
+import { response } from "../../common/response";
 
-const PATH_ROUTER = `${__dirname}`;
-const router = Router();
-
-/*
- * index.ts [''.'ts']
- * Dynamic router creator
- * The name of the file in ./routes is a route
+/**
+ * * http://localhost:3000/api/v1/
  */
 
-const cleanFileName = (filename: string) => {
-  //* return just the file name without extension
-  const file = filename.split(".").shift();
-  return file;
-};
+class IndexRoutes {
+  public router: Router = Router(); //* router config
 
-readdirSync(PATH_ROUTER).filter((fileName) => {
-  const cleanName = cleanFileName(fileName);
+  constructor() {
+    this.config();
+  }
 
-  if (cleanName != "index") {
-    //* dynamic typescript import
+  //* routes config
+  config(): void {
+    this.router.get("/", ({ headers: { host } }: Request, res: Response) => {
+      const menu: { [key: string]: string } = {
+        docs: `http://${host}/api/v1/api/docs`,
+        products: `http://${host}/api/v1/products`,
+      };
 
-    import(`./${cleanName}`).then((moduleRoute) => {
-      console.log(`${cleanName} route loaded`);
-      router.use(`/api/v1/${cleanName}`, moduleRoute.router);
+      response.success(res, 200, "Api menu", menu);
     });
   }
-});
+}
 
-export default router;
+const indexRoutes = new IndexRoutes();
+export default indexRoutes.router;
