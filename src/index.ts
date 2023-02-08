@@ -5,7 +5,7 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import cors from "cors";
 
-import productsRoutes from "./v1/routes/products.routes";
+import moviesRoutes from "./v1/routes/movies.routes";
 import indexRoutes from "./v1/routes/index";
 
 class Server {
@@ -33,7 +33,7 @@ class Server {
   //* routes config method
   routes(): void {
     this.app.use("/", indexRoutes);
-    this.app.use("/api/v1/products", productsRoutes);
+    this.app.use("/api/v1/movies", moviesRoutes);
   }
 
   //* database config method
