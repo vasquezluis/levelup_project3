@@ -17,7 +17,7 @@ class IndexRoutes {
     this.router.get("/", ({ headers: { host } }: Request, res: Response) => {
       const menu: { [key: string]: string } = {
         docs: `http://${host}/api/v1/api/docs`,
-        products: `http://${host}/api/v1/products`,
+        movies: `http://${host}/api/v1/movies`,
       };
 
       response.success(res, 200, "Api menu", menu);
