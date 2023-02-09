@@ -13,6 +13,7 @@ const MoviesSchema = new Schema<Movie>(
       type: String,
       require: true,
     },
+    genders: [String],
     description: {
       type: String,
       required: true,
