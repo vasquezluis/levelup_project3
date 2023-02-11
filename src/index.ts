@@ -5,8 +5,10 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import cors from "cors";
 
-import moviesRoutes from "./v1/routes/movies.routes";
-import indexRoutes from "./v1/routes/index";
+import indexRoutes from "./api/v1/routes/index";
+import moviesRoutes from "./api/v1/routes/movies.routes";
+import usersRoutes from "./api/v1/routes/users.routes";
+import reservationsRoutes from "./api/v1/routes/reservations.routes";
 
 class Server {
   //* server class
@@ -34,6 +36,8 @@ class Server {
   routes(): void {
     this.app.use("/", indexRoutes);
     this.app.use("/api/v1/movies", moviesRoutes);
+    this.app.use("/api/v1/users", usersRoutes);
+    this.app.use("/api/v1/reservations", reservationsRoutes);
   }
 
   //* database config method
