@@ -13,4 +13,5 @@ export interface User {
   password: string;
   roles: string[];
   permissions: string[];
+  active: boolean;
 }
