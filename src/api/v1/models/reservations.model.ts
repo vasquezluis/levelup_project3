@@ -9,9 +9,21 @@ const ReservationsSchema = new Schema<Reservation>(
       type: String,
       required: true,
     },
+    movieId: {
+      type: String,
+      require: true,
+    },
+    schedule: {
+      type: String,
+      require: true,
+    },
+    cinema: {
+      type: String,
+      require: true,
+    },
     active: {
       type: Boolean,
-      required: true,
+      default: true,
     },
   },
   { timestamps: true, versionKey: false }
