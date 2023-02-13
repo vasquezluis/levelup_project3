@@ -1,4 +1,5 @@
 import { Schema, model } from "mongoose";
+import { boolean } from "zod";
 import { User } from "../interfaces/users.interface";
 
 // * users schema based on user interface
@@ -23,7 +24,7 @@ const UsersSchema = new Schema<User>(
     },
     credits: {
       type: Number,
-      required: true,
+      default: 300,
     },
     user: {
       type: String,
@@ -39,6 +40,10 @@ const UsersSchema = new Schema<User>(
     },
     roles: [String],
     permissions: [String],
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );
