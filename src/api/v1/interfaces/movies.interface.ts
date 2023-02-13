@@ -10,4 +10,5 @@ export interface Movie {
   description: string;
   schedules: string[];
   cinemas: string[];
+  active: boolean 
 }
