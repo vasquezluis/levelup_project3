@@ -24,6 +24,10 @@ const MoviesSchema = new Schema<Movie>(
     },
     schedules: [{ schedule: String, date: Date }],
     cinemas: [String],
+    active: {
+      type: Boolean,
+      default: true,
+    },
   },
   { timestamps: true, versionKey: false }
 );
