@@ -8,7 +8,6 @@ export interface Movie {
   genders: string[];
   cost: number;
   description: string;
-  schedules: string[];
-  cinemas: string[];
+  schedules: any[];
   active: boolean 
 }
