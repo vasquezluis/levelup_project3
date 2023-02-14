@@ -22,8 +22,7 @@ const MoviesSchema = new Schema<Movie>(
       type: String,
       required: true,
     },
-    schedules: [{ schedule: String, date: Date }],
-    cinemas: [String],
+    schedules: [{ schedule: String, date: Date, cinema: String }],
     active: {
       type: Boolean,
       default: true,
