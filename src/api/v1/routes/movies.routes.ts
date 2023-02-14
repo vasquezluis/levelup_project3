@@ -16,6 +16,7 @@ class MoviesRoutes {
 
   //* routes config
   config(): void {
+    this.router.get("/:movieName", itemsController.getItem);
     this.router.get("/", itemsController.getItems);
     this.router.post("/", itemsController.createItem);
   }
