@@ -16,9 +16,12 @@ class MoviesRoutes {
 
   //* routes config
   config(): void {
-    this.router.get("/:movieName", itemsController.getItem);
+    this.router.get("/active", itemsController.getActiveItems);
+    this.router.get("/:id", itemsController.getItem);
     this.router.get("/", itemsController.getItems);
     this.router.post("/", itemsController.createItem);
+    this.router.put("/:id", itemsController.updateItem);
+    this.router.delete("/:id", itemsController.deleteItem);
   }
 }
 
