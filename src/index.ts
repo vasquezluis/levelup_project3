@@ -9,6 +9,7 @@ import indexRoutes from "./api/v1/routes/index";
 import moviesRoutes from "./api/v1/routes/movies.routes";
 import usersRoutes from "./api/v1/routes/users.routes";
 import reservationsRoutes from "./api/v1/routes/reservations.routes";
+import accreditationsRoutes from "./api/v1/routes/accreditations.routes";
 
 class Server {
   //* server class
@@ -38,6 +39,7 @@ class Server {
     this.app.use("/api/v1/movies", moviesRoutes);
     this.app.use("/api/v1/users", usersRoutes);
     this.app.use("/api/v1/reservations", reservationsRoutes);
+    this.app.use("/api/v1/accreditations", accreditationsRoutes);
   }
 
   //* database config method
