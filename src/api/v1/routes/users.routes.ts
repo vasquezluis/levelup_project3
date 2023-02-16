@@ -16,9 +16,17 @@ class UsersRoutes {
 
   //* routes config
   config(): void {
+    this.router.get("/active", itemsController.getActiveItems);
+    this.router.get("/:id", itemsController.getItem);
     this.router.get("/", itemsController.getItems);
     this.router.post("/", itemsController.createItem);
-    this.router.get("/:userId", itemsController.getUsersReservations);
+    this.router.put("/:id", itemsController.updateItem);
+    this.router.delete("/:id", itemsController.deleteItem);
+    this.router.get("/:id/reservations", itemsController.getUsersReservations);
+    this.router.get(
+      "/:id/accreditations",
+      itemsController.getUsersAccreditations
+    );
   }
 }
 
