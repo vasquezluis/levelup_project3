@@ -4,8 +4,7 @@
 
 export interface Reservation {
   userId: string;
-  movieId: string
-  schedule: string
-  cinema: string
-  active: boolean
+  movieId: string;
+  schedule: string;
+  active: boolean;
 }
