@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Accreditation } from "../interfaces/accreditation.interface";
+import { Accreditation } from "../interfaces/accreditations.interface";
 
 // * accreditation schema based on accreditation interface
 
