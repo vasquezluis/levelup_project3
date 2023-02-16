@@ -20,6 +20,7 @@ class IndexRoutes {
         movies: `http://${host}/api/v1/movies`,
         users: `http://${host}/api/v1/users`,
         reservations: `http://${host}/api/v1/reservations`,
+        accreditations: `http://${host}/api/v1/accreditations`,
       };
 
       response.success(res, 200, "Api menu", menu);
