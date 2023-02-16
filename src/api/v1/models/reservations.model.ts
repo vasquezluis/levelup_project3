@@ -17,10 +17,6 @@ const ReservationsSchema = new Schema<Reservation>(
       type: String,
       require: true,
     },
-    cinema: {
-      type: String,
-      require: true,
-    },
     active: {
       type: Boolean,
       default: true,
