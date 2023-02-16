@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .env
+z_accreditations.txt
 z_movies.txt
 z_reservaciones.txt
 z_usuarios.txt
