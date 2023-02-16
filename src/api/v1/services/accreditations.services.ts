@@ -1,4 +1,4 @@
-import AccreditationModel from "../models/accreditation.model";
+import AccreditationModel from "../models/accreditations.model";
 import UserModel from "../models/users.model";
 
 class AccreditationsServices {
