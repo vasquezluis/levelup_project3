@@ -8,6 +8,9 @@ class ReservationsServices {
   public userFound: any; //* public variable for response
   public movieCost: any; //* public variable for response
   public newUserCredits: any; //* public variable for response
+  public newReservationData: any; //* public variable for response
+  public scheduleFound: any; //* public variable for response
+  public totalCredits: any; //* public variable for response
 
   // * function to get one item
   public async getReservation(id: string) {
@@ -46,14 +49,28 @@ class ReservationsServices {
 
   public async createReservation(reservation: any) {
     try {
-      this.response = await ReservationModel.create(reservation);
       this.movieFound = await MovieModel.findById(reservation.movieId);
       this.userFound = await UserModel.findById(reservation.userId);
-      this.movieCost = this.movieFound.cost;
+      this.movieCost = parseInt(this.movieFound.cost);
+      this.scheduleFound = this.movieFound.schedules.filter(
+        (item: any) => item._id == reservation.schedule
+      )[0];
+      this.totalCredits = this.movieCost * reservation.seats.length;
+      this.newReservationData = {
+        userId: reservation.userId,
+        movie: this.movieFound.name,
+        schedule: this.scheduleFound,
+        seats: reservation.seats,
+        totalCredits: this.totalCredits,
+      };
 
-      if (this.userFound.credits > parseInt(this.movieCost)) {
-        // ! update user credits
-        this.newUserCredits = this.userFound.credits - parseInt(this.movieCost);
+      if (this.userFound.credits > this.movieCost * reservation.seats.length) {
+        // TODO creating a reservation item
+        this.response = await ReservationModel.create(this.newReservationData);
+
+        // TODO update user credits
+        this.newUserCredits =
+          this.userFound.credits - this.movieCost * reservation.seats.length;
         await UserModel.findByIdAndUpdate(reservation.userId, {
           credits: this.newUserCredits,
         });
