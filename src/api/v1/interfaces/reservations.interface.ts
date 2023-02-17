@@ -4,7 +4,13 @@
 
 export interface Reservation {
   userId: string;
-  movieId: string;
-  schedule: string;
+  movie: string;
+  schedule: {
+    schedule: string;
+    date: Date;
+    cinema: string;
+  };
+  seats: [string];
+  totalCredits: number;
   active: boolean;
 }
