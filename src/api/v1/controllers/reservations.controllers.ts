@@ -52,11 +52,18 @@ class ItemsController {
   public createItem = async ({ body }: Request, res: Response) => {
     try {
       const reservation = body;
-      console.log(reservation);
 
       const result = await reservationsServices.createReservation(reservation);
 
-      response.success(res, 201, "Reservation created", result);
+      // * handling result
+      if (result == "Insufficient credits") {
+        response.error(
+          res,
+          new createHttpError.BadRequest("Insufficient credits")
+        );
+      } else {
+        response.success(res, 201, "Reservation created", result);
+      }
     } catch (error: any) {
       response.error(res, error);
     }
