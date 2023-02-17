@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { accreditationsServices } from "../services/accreditation.services";
+import { accreditationsServices } from "../services/accreditations.services";
 import { response } from "../../../common/response";
 import createHttpError from "http-errors";
 
