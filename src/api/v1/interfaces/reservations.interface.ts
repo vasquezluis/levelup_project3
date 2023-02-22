@@ -5,6 +5,7 @@
 export interface Reservation {
   userId: string;
   movie: string;
+  moviePoster: string;
   schedule: {
     schedule: string;
     date: Date;
