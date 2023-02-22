@@ -13,6 +13,10 @@ const MoviesSchema = new Schema<Movie>(
       type: String,
       required: true,
     },
+    trailer: {
+      type: String,
+      required: true,
+    },
     genders: [String],
     cost: {
       type: Number,
