@@ -13,6 +13,10 @@ const ReservationsSchema = new Schema<Reservation>(
       type: String,
       require: true,
     },
+    moviePoster: {
+      type: String,
+      require: true,
+    },
     schedule: {
       schedule: {
         type: String,
