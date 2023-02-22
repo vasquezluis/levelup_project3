@@ -9,6 +9,10 @@ const AccreditationSchema = new Schema<Accreditation>(
       type: String,
       required: true,
     },
+    user: {
+      type: String,
+      required: true,
+    },
     credits: {
       type: Number,
       required: true,
