@@ -5,6 +5,7 @@ class AccreditationsServices {
   public response: any; //* public variable for response
   public user: any;
   public accreditation: any;
+  public newAccreditationData: any;
   public userCredits: any;
   public newCredits: any;
 
@@ -44,7 +45,14 @@ class AccreditationsServices {
   //* function to create an item
   public async createAccreditation(accreditation: any) {
     try {
-      this.response = await AccreditationModel.create(accreditation);
+      this.user = await UserModel.findById(accreditation.userId);
+      this.newAccreditationData = {
+        user: this.user.user,
+        ...accreditation,
+      };
+      this.response = await AccreditationModel.create(
+        this.newAccreditationData
+      );
 
       return this.response;
     } catch (error: any) {
@@ -84,6 +92,8 @@ class AccreditationsServices {
   }
 
   // * function to accept an accreditation
+  // * id for accreditation request => params
+  // * credits amount from admin => body
   // ? active attribute on false
   // ? accepted attribute on true
   // ! update user credits amount
