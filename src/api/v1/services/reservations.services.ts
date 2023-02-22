@@ -56,9 +56,12 @@ class ReservationsServices {
         (item: any) => item._id == reservation.schedule
       )[0];
       this.totalCredits = this.movieCost * reservation.seats.length;
+
+      // * new Data for document
       this.newReservationData = {
         userId: reservation.userId,
         movie: this.movieFound.name,
+        moviePoster: this.movieFound.poster,
         schedule: this.scheduleFound,
         seats: reservation.seats,
         totalCredits: this.totalCredits,
