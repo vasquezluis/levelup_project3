@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import { boolean } from "zod";
 import { User } from "../interfaces/users.interface";
 
 // * users schema based on user interface
