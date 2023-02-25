@@ -50,7 +50,13 @@ class ItemsController {
     try {
       const user = body;
 
-      const result = await usersServices.createUser(user);
+      const newUserData = {
+        ...user,
+        roles: ["user"],
+        permissions: ["reservations", "movies"],
+      };
+
+      const result = await usersServices.createUser(newUserData);
 
       response.success(res, 201, "User created", result);
     } catch (error: any) {
