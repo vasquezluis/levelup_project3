@@ -5,16 +5,12 @@ import "dotenv/config";
 import { authServices } from "../services/auth.services";
 
 class ItemsController {
-  private userData = {
-    email: "luivasquez95@gmail.com",
-    user: "luisvasquez",
-  };
+  private userData: any;
   private response: any;
   private jwtsecret: any;
   private expirationTime: string;
 
   constructor() {
-    this.userData = this.userData;
     this.jwtsecret = process.env.JWT_SECRET;
     this.expirationTime = "5h";
   }
@@ -33,6 +29,13 @@ class ItemsController {
         }
       }
 
+      this.userData = {
+        id: this.response._id,
+        user: this.response.user,
+        roles: this.response.roles,
+        permissions: this.response.permissions,
+      };
+
       jwt.sign(
         this.userData,
         this.jwtsecret,
@@ -44,10 +47,7 @@ class ItemsController {
             message: "authData",
             token: token,
             expiration: `Expires in ${this.expirationTime} from now.`,
-            userData: {
-              id: this.response._id,
-              user: this.response.user,
-            },
+            userData: this.userData,
           });
         }
       );
