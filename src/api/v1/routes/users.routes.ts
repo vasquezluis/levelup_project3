@@ -1,7 +1,11 @@
 import { Router } from "express";
 import { itemsController } from "../controllers/users.controllers";
-import { requireAuth } from "../middlewares/authValidator.middlewares";
 
+// ? authtentications
+import { requireAdminAuth } from "../middlewares/adminAuthValidator.middlewares";
+import { requireAuth } from "../middlewares/userAuthValidator.middlewares";
+
+// ? body validations
 import { schemaValidation } from "../middlewares/schemaValidator.middlewares";
 import { CreateMoviesSchema } from "../schemas/movies.schema";
 
@@ -117,7 +121,11 @@ class UsersRoutes {
      *       403:
      *        description: Unauthorized, non-exist, invalid or expired token
      */
-    this.router.get("/active", itemsController.getActiveItems);
+    this.router.get(
+      "/active",
+      requireAdminAuth,
+      itemsController.getActiveItems
+    );
 
     /**
      * @swagger
@@ -146,7 +154,7 @@ class UsersRoutes {
      *      404:
      *        description: User not found
      */
-    this.router.get("/:id", itemsController.getItem);
+    this.router.get("/:id", requireAuth, itemsController.getItem);
 
     /**
      * @swagger
@@ -168,7 +176,7 @@ class UsersRoutes {
      *       403:
      *        description: Unauthorized, non-exist, invalid or expired token
      */
-    this.router.get("/", requireAuth, itemsController.getItems);
+    this.router.get("/", requireAdminAuth, itemsController.getItems);
 
     /**
      * @swagger
@@ -208,7 +216,7 @@ class UsersRoutes {
      *      500:
      *        description: Server error.
      */
-    this.router.post("/", itemsController.createItem);
+    this.router.post("/", requireAuth, itemsController.createItem);
 
     /**
      * @swagger
@@ -251,7 +259,7 @@ class UsersRoutes {
      *      500:
      *        description: Server error
      */
-    this.router.put("/:id", itemsController.updateItem);
+    this.router.put("/:id", requireAuth, itemsController.updateItem);
 
     /**
      * @swagger
@@ -272,7 +280,7 @@ class UsersRoutes {
      *        description: User not found
      *
      */
-    this.router.delete("/:id", itemsController.deleteItem);
+    this.router.delete("/:id", requireAuth, itemsController.deleteItem);
 
     /**
      * @swagger
@@ -301,7 +309,11 @@ class UsersRoutes {
      *      404:
      *        description: User not found
      */
-    this.router.get("/:id/reservations", itemsController.getUsersReservations);
+    this.router.get(
+      "/:id/reservations",
+      requireAuth,
+      itemsController.getUsersReservations
+    );
 
     /**
      * @swagger
@@ -332,6 +344,7 @@ class UsersRoutes {
      */
     this.router.get(
       "/:id/accreditations",
+      requireAuth,
       itemsController.getUsersAccreditations
     );
   }
