@@ -1,5 +1,10 @@
 import { Router } from "express";
 import { itemsController } from "../controllers/movies.controllers";
+
+// ? authtentications
+import { requireAdminAuth } from "../middlewares/adminAuthValidator.middlewares";
+import { requireAuth } from "../middlewares/userAuthValidator.middlewares";
+
 import { schemaValidation } from "../middlewares/schemaValidator.middlewares";
 import { CreateMoviesSchema } from "../schemas/movies.schema";
 
@@ -19,9 +24,9 @@ class MoviesRoutes {
     this.router.get("/active", itemsController.getActiveItems);
     this.router.get("/:id", itemsController.getItem);
     this.router.get("/", itemsController.getItems);
-    this.router.post("/", itemsController.createItem);
-    this.router.put("/:id", itemsController.updateItem);
-    this.router.delete("/:id", itemsController.deleteItem);
+    this.router.post("/", requireAdminAuth, itemsController.createItem);
+    this.router.put("/:id", requireAdminAuth, itemsController.updateItem);
+    this.router.delete("/:id", requireAdminAuth, itemsController.deleteItem);
   }
 }
 
