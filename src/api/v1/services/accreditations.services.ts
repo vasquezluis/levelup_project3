@@ -109,6 +109,9 @@ class AccreditationsServices {
       // ? changing accepted on accreditation to true
       await AccreditationModel.findByIdAndUpdate(id, { accepted: true });
       await AccreditationModel.findByIdAndUpdate(id, { active: false });
+      await AccreditationModel.findByIdAndUpdate(id, {
+        credits: parseInt(credits),
+      });
 
       this.response = await UserModel.findByIdAndUpdate(
         { _id: this.user._id },
