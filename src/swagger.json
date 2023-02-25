@@ -1,0 +1,16 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API: Cines de Guatemala",
+      "version": "1.0.0",
+      "description": "API simple para operaciones de reservaciones de peliculas."
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000/api/v1"
+      }
+    ]
+  },
+  "apis": ["./src/api/v1/routes/*.ts"]
+}
