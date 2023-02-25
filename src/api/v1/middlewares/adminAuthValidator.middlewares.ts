@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 
-export const requireAuth = (
+export const requireAdminAuth = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -19,8 +19,10 @@ export const requireAuth = (
   jwt.verify(token, secret, (error: any, payload: any) => {
     if (error) return res.json({ message: error });
 
-    console.log(payload);
-
-    next();
+    if (payload.roles.includes("admin")) {
+      next();
+    } else {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
   });
 };
