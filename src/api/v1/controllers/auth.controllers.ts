@@ -12,7 +12,7 @@ class ItemsController {
 
   constructor() {
     this.jwtsecret = process.env.JWT_SECRET;
-    this.expirationTime = "5h";
+    this.expirationTime = "1d";
   }
 
   public loginHandler = async (req: Request, res: Response) => {
