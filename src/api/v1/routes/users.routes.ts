@@ -216,7 +216,7 @@ class UsersRoutes {
      *      500:
      *        description: Server error.
      */
-    this.router.post("/", requireAuth, itemsController.createItem);
+    this.router.post("/", itemsController.createItem);
 
     /**
      * @swagger
