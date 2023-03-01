@@ -14,6 +14,7 @@ import usersRoutes from "./api/v1/routes/users.routes";
 import reservationsRoutes from "./api/v1/routes/reservations.routes";
 import accreditationsRoutes from "./api/v1/routes/accreditations.routes";
 import authRoutes from "./api/v1/routes/auth.routes";
+import seatsRoutes from "./api/v1/routes/seats.routes";
 
 class Server {
   //* server class
@@ -52,6 +53,7 @@ class Server {
     this.app.use("/api/v1/reservations", reservationsRoutes);
     this.app.use("/api/v1/accreditations", accreditationsRoutes);
     this.app.use("/api/v1/login", authRoutes);
+    this.app.use("/api/v1/seats", seatsRoutes);
   }
 
   //* database config method
