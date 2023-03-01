@@ -1,4 +1,5 @@
 import MovieModel from "../models/movies.model";
+import SeatModel from "../models/seats.model";
 
 class MoviesServices {
   public response: any; //* public variable for response
@@ -67,6 +68,17 @@ class MoviesServices {
         { _id: id },
         { $set: { active: false } }
       );
+
+      return this.response;
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }
+
+  //* function to get seats of a certain movie
+  public async getMovieSeats(id: string) {
+    try {
+      this.response = await SeatModel.findOne({ movieId: id });
 
       return this.response;
     } catch (error: any) {
