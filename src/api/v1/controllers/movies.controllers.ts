@@ -96,6 +96,25 @@ class ItemsController {
       response.error(res, error);
     }
   };
+
+  // * get one item by movieId
+  public getMovieSeats = async (req: Request, res: Response) => {
+    try {
+      const {
+        params: { id },
+      } = req;
+
+      const result = await moviesServices.getMovieSeats(id);
+
+      if (!result) {
+        response.error(res, new createHttpError.NotFound("Movie not found!"));
+      } else {
+        response.success(res, 200, `Seats data for movie ${id}`, result);
+      }
+    } catch (error: any) {
+      response.error(res, error);
+    }
+  };
 }
 
 export const itemsController = new ItemsController();
