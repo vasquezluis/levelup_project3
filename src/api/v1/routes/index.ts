@@ -19,6 +19,7 @@ class IndexRoutes {
         docs: `http://${host}/api/v1/api-docs`,
         login: `http://${host}/api/v1/login`,
         movies: `http://${host}/api/v1/movies`,
+        seats: `http://${host}/api/v1/seats`,
         users: `http://${host}/api/v1/users`,
         reservations: `http://${host}/api/v1/reservations`,
         accreditations: `http://${host}/api/v1/accreditations`,
