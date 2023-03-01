@@ -23,6 +23,7 @@ class MoviesRoutes {
   config(): void {
     this.router.get("/active", itemsController.getActiveItems);
     this.router.get("/:id", itemsController.getItem);
+    this.router.get("/:id/seats", itemsController.getMovieSeats);
     this.router.get("/", itemsController.getItems);
     this.router.post("/", requireAdminAuth, itemsController.createItem);
     this.router.put("/:id", requireAdminAuth, itemsController.updateItem);
