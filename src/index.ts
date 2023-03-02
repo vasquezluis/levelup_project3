@@ -38,7 +38,7 @@ class Server {
     this.app.use(morgan("dev"));
     this.app.use(
       cors({
-        origin: "https://grand-starship-0fbe1f.netlify.app",
+        origin: "https://pelispelis.netlify.app/",
         credentials: true,
       })
     );
