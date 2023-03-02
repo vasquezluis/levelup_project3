@@ -36,7 +36,12 @@ class Server {
   config(): void {
     this.app.set("port", process.env.PORT || 3000); //* node process
     this.app.use(morgan("dev"));
-    this.app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+    this.app.use(
+      cors({
+        origin: "https://grand-starship-0fbe1f.netlify.app",
+        credentials: true,
+      })
+    );
     this.app.use(express.json());
     this.app.use(
       "/api/v1/api-docs",
