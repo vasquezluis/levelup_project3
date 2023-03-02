@@ -2,13 +2,13 @@
   "definition": {
     "openapi": "3.0.0",
     "info": {
-      "title": "API: Cines de Guatemala",
+      "title": "API: PELISPELIS",
       "version": "1.0.0",
       "description": "API simple para operaciones de reservaciones de peliculas."
     },
     "servers": [
       {
-        "url": "http://localhost:3000/api/v1"
+        "url": "ec2-52-15-71-160.us-east-2.compute.amazonaws.com/api/v1"
       }
     ]
   },
